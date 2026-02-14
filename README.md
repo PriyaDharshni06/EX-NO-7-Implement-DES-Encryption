@@ -13,10 +13,38 @@ To use the Data Encryption Standard (DES) algorithm for a practical application,
 
 ## Program:
 
+```python
+def xor_crypt(input_text, key):
+    output = []
+    key_length = len(key)
 
+    for i in range(len(input_text)):
+        xor_char = chr(ord(input_text[i]) ^ ord(key[i % key_length]))
+        output.append(xor_char)
+
+    return ''.join(output)
+
+
+# Main program
+msg = input("Enter message: ")
+key = input("Enter key: ")
+
+# Encrypt
+enc = xor_crypt(msg, key)
+
+print("Encrypted:", end=" ")
+for ch in enc:
+    print(f"{ord(ch):02X}", end=" ")
+print()
+
+# Decrypt
+dec = xor_crypt(enc, key)
+print("Decrypted:", dec)
+```
 
 
 ## Output:
+<img width="1705" height="912" alt="image" src="https://github.com/user-attachments/assets/5db90b01-7e56-4b2b-b1e6-d0bf65e2c581" />
 
 
 ## Result:
